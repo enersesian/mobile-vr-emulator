@@ -102,6 +102,9 @@ public class OVRHeadsetEmulator : MonoBehaviour
                     emulatedTranslation.y += emulatedHeight;
                     manager.headPoseRelativeOffsetTranslation = emulatedTranslation;
 
+                    controller.GetComponent<LaserPointer>().SetCursorRay(controller.transform);
+                    controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.On;
+
                     float deltaX = Input.GetAxis("Mouse X");
                     float deltaY = Input.GetAxis("Mouse Y");
 
@@ -179,6 +182,8 @@ public class OVRHeadsetEmulator : MonoBehaviour
                         manager.headPoseRelativeOffsetRotation = Vector3.zero;
                         controllerParent.transform.rotation = Quaternion.identity;
                         controller.transform.rotation = Quaternion.identity;
+                        controller.GetComponent<LaserPointer>().SetCursorRay(controller.transform);
+                        controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.Off;
                     }
                 }
             }
