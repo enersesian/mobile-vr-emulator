@@ -93,6 +93,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	void Start() 
 	{
+        /* Temp removal for WebGL build
 		audioSource.loop = true; 	// Set the AudioClip to loop
 		audioSource.mute = false; 	
 
@@ -102,6 +103,7 @@ public class OVRMicInput : MonoBehaviour
 			micSelected = true;
 			GetMicCaps();
 		}
+        */
 	}
 
 	/// <summary>
@@ -109,6 +111,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	void Update() 
 	{
+        /* Temp removal for WebGL build
 		if (!focused)
 			StopMicrophone();
 		
@@ -152,6 +155,7 @@ public class OVRMicInput : MonoBehaviour
 		//Mic Slected = False
 		if (Input.GetKeyDown(KeyCode.M))
 			micSelected = false;
+            */
 	}
 	
 	
@@ -161,11 +165,13 @@ public class OVRMicInput : MonoBehaviour
 	/// <param name="focus">If set to <c>true</c> focus.</param>
 	void OnApplicationFocus(bool focus) 
 	{
+        /* Temp removal for WebGL build
 		focused = focus;
 
 		// fixes app with a delayed buffer if going out of focus
 		if (!focused)
 			StopMicrophone();
+            */
 	}
 	
 	/// <summary>
@@ -174,16 +180,20 @@ public class OVRMicInput : MonoBehaviour
 	/// <param name="focus">If set to <c>true</c> focus.</param>
 	void OnApplicationPause(bool focus) 
 	{
+        /* Temp removal for WebGL build
 		focused = focus;
 
 		// fixes app with a delayed buffer if going out of focus
 		if (!focused)
 			StopMicrophone();
+            */
 	}
 
 	void OnDisable()
 	{
+        /* Temp removal for WebGL build
 		StopMicrophone();
+        */
 	}
 
 	/// <summary>
@@ -209,6 +219,7 @@ public class OVRMicInput : MonoBehaviour
 	/// <param name="buttonSpaceLeft">Button space left.</param>
 	public void MicDeviceGUI (float left, float top, float width, float height, float buttonSpaceTop, float buttonSpaceLeft) 
 	{
+        /* Temp removal for WebGL build
 		//If there is more than one device, choose one.
 		if (Microphone.devices.Length >= 1 && GuiSelectDevice == true && micSelected == false)
 		{
@@ -225,6 +236,7 @@ public class OVRMicInput : MonoBehaviour
 				}
 			}
 		}
+        */
 	}
 
 	/// <summary>
@@ -232,6 +244,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	public void GetMicCaps () 
 	{
+        /* Temp removal for WebGL build
 		if(micSelected == false) return;
 
 		//Gets the frequency of the device
@@ -246,6 +259,7 @@ public class OVRMicInput : MonoBehaviour
 	
 		if (micFrequency > maxFreq)
 			micFrequency = maxFreq;
+            */
 	}
 
 	/// <summary>
@@ -253,6 +267,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	public void StartMicrophone () 
 	{
+        /* Temp removal for WebGL build
 		if(micSelected == false) return;
 			
 		//Starts recording
@@ -263,6 +278,7 @@ public class OVRMicInput : MonoBehaviour
 
 		// Play the audio source
 		audioSource.Play();
+        */
 	}
 
 	/// <summary>
@@ -270,6 +286,7 @@ public class OVRMicInput : MonoBehaviour
 	/// </summary>
 	public void StopMicrophone () 
 	{
+        /* Temp removal for WebGL build
 		if(micSelected == false) return;
 
 		// Overriden with a clip to play? Don't stop the audio source
@@ -277,6 +294,7 @@ public class OVRMicInput : MonoBehaviour
 			audioSource.Stop();
 
 		Microphone.End(selectedDevice);
+        */
 	}    
 
 

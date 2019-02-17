@@ -67,14 +67,14 @@ public class OVRHeadsetEmulator : MonoBehaviour
         recordedHeadPoseRelativeOffsetRotation = manager.headPoseRelativeOffsetRotation;
         recordedControllerRotation = controller.transform.rotation;
         controller.GetComponent<LaserPointer>().SetCursorRay(controller.transform);
-        if(!Application.isEditor) controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.On;
+        if(!Application.isEditor || Application.isMobilePlatform) controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.On;
         else controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.Off;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Application.isEditor)
+        if(Application.isEditor || !Application.isMobilePlatform)
         {
             emulationActivated = IsEmulationActivated();
             controllerActivated = IsControllerActivated();
