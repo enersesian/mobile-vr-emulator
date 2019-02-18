@@ -67,14 +67,19 @@ public class OVRHeadsetEmulator : MonoBehaviour
         recordedHeadPoseRelativeOffsetRotation = manager.headPoseRelativeOffsetRotation;
         recordedControllerRotation = controller.transform.rotation;
         controller.GetComponent<LaserPointer>().SetCursorRay(controller.transform);
-        if(!Application.isEditor || Application.isMobilePlatform) controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.On;
-        else controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.Off;
+
+        //commented out for WebGL build
+        //if(!Application.isEditor) controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.On;
+        controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.On;
+
+        //commented out for WebGL build
+        //else controller.GetComponent<LaserPointer>().laserBeamBehavior = LaserPointer.LaserBeamBehavior.Off;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Application.isEditor || !Application.isMobilePlatform)
+        if(true) //Application.isEditor) //commented out for WebGL build
         {
             emulationActivated = IsEmulationActivated();
             controllerActivated = IsControllerActivated();
@@ -198,6 +203,8 @@ public class OVRHeadsetEmulator : MonoBehaviour
 
     bool IsEmulationActivated()
     {
+        //commented out for WebGL build
+        /*
         if (opMode == OpMode.Off)
         {
             return false;
@@ -206,6 +213,7 @@ public class OVRHeadsetEmulator : MonoBehaviour
         {
             return false;
         }
+        */
 
         foreach (KeyCode key in activateKeys)
         {

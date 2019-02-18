@@ -31,7 +31,7 @@ public class controllerInteraction : MonoBehaviour
                     hit.collider.GetComponent<Outline>().enabled = true;
                     hitInteractive = true;
                 }
-                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || (Application.isEditor && Input.GetMouseButtonDown(0)))
+                if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || (Input.GetMouseButtonDown(0)))//(Application.isEditor && Input.GetMouseButtonDown(0))) //commented out for WebGL build
                 {
                     lastHit.GetComponent<Collider>().enabled = false;
                     lastHit.GetComponent<Rigidbody>().useGravity = false;
@@ -94,8 +94,8 @@ public class controllerInteraction : MonoBehaviour
         }
         else
         {
-            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || (Application.isEditor && Input.GetMouseButtonDown(0)))
-            {
+            if (OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger) || (Input.GetMouseButtonDown(0)))//(Application.isEditor && Input.GetMouseButtonDown(0))) //commented out for WebGL build
+                {
                 lastHit.GetComponent<Collider>().enabled = true;
                 lastHit.GetComponent<Rigidbody>().useGravity = true;
                 lastHit.GetComponent<Rigidbody>().isKinematic = false;

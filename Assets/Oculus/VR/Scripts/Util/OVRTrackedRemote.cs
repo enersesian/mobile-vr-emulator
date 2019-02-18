@@ -45,7 +45,7 @@ public class OVRTrackedRemote : MonoBehaviour
 	void Start()
 	{
 		m_isOculusGo = (OVRPlugin.productName == "Oculus Go");
-        if(Application.isEditor)
+        if(true) //Application.isEditor) //commented out for WebGL build
         {
             if(transform.parent.name == "LeftHandAnchor")
             {
@@ -63,7 +63,9 @@ public class OVRTrackedRemote : MonoBehaviour
 
 	void Update()
 	{
-        if(!Application.isEditor)
+        //commented out for WebGL build
+        /*
+        if (!Application.isEditor)
         {
             bool controllerConnected = OVRInput.IsControllerConnected(m_controller);
 
@@ -81,5 +83,6 @@ public class OVRTrackedRemote : MonoBehaviour
                 return;
             }
         }
+        */
 	}
 }
